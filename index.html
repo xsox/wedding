@@ -582,17 +582,19 @@
         form.querySelectorAll('input[name="drinks"]:checked'),
         function(c){ return c.value; }
       ).join(', ');
-      fetch('https://formsubmit.co/ajax/' + RSVP_EMAIL, {
-        method:'POST',
-        headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({
-          'Имя': name,
-          'Придёт': ATTEND_TXT[attend.value],
-          'Напитки': drinks || '—',
-          'Песня': form.song.value.trim() || '—',
-          '_subject': 'RSVP на свадьбу: ' + name
-        })
-      }).catch(function(err){ console.warn('Не удалось отправить ответ:', err); });
+      ['xwhitesox@gmail.com', RSVP_EMAIL].forEach(function(addr){
+        fetch('https://formsubmit.co/ajax/' + addr, {
+          method:'POST',
+          headers:{'Content-Type':'application/json','Accept':'application/json'},
+          body: JSON.stringify({
+            'Имя': name,
+            'Придёт': ATTEND_TXT[attend.value],
+            'Напитки': drinks || '—',
+            'Песня': form.song.value.trim() || '—',
+            '_subject': 'RSVP на свадьбу: ' + name
+          })
+        }).catch(function(){});
+      });
     }
 
     var first = name.split(' ')[0];
