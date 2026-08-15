@@ -30,12 +30,11 @@
   .wrap{max-width:1080px; margin:0 auto; padding:0 clamp(1.2rem,5vw,3rem)}
   .sec{padding:clamp(4rem,10vw,7rem) 0; position:relative}
 
-  /* ── шапки секций ── */
   .eyebrow{font:500 .72rem/1 var(--ff-b); letter-spacing:.42em; text-transform:uppercase; color:var(--gold); text-align:center}
   .s-title{font-family:var(--ff-d); font-weight:500; font-size:clamp(2.1rem,7vw,3.2rem); text-align:center; margin:.9rem 0 1.4rem; color:var(--ink)}
   .div-orn{display:block; width:min(280px,70%); margin:0 auto}
 
-  /* ── конверт ── */
+  /* конверт */
   .env{position:fixed; inset:0; z-index:100; background:var(--bg); overflow:hidden}
   .flap{position:absolute; inset:0; transition:transform 1s cubic-bezier(.6,.05,.2,1) .1s}
   .fl-t{clip-path:polygon(0 0,100% 0,50% 54%); background:#f9f3ea}
@@ -64,38 +63,25 @@
   .env.open .seal{transform:scale(1.2); opacity:0; animation:none}
   @keyframes sealPulse{0%,100%{transform:scale(1)} 50%{transform:scale(1.04)}}
 
-  /* ── лепестки ── */
+  /* лепестки — полупрозрачные */
   #petals{position:fixed; inset:0; pointer-events:none; z-index:6; overflow:hidden}
-  #petals i{position:absolute; top:-8vh; display:block; background:radial-gradient(circle at 35% 28%, #fff 0 16%, var(--pink) 45%, var(--rose) 100%); border-radius:50%; opacity:.85; animation:drift linear infinite}
+  #petals i{position:absolute; top:-8vh; display:block; background:radial-gradient(circle at 35% 28%, #fff 0 16%, var(--pink) 45%, var(--rose) 100%); border-radius:50%; opacity:.4; animation:drift linear infinite}
   @keyframes drift{
     0%{transform:translate3d(0,-8vh,0) rotate(0deg)}
     50%{transform:translate3d(4vw,50vh,0) rotate(170deg)}
     100%{transform:translate3d(-4vw,108vh,0) rotate(340deg)}
   }
 
-  /* ── кнопка музыки ── */
-  .music{
-    position:fixed; right:18px; bottom:calc(18px + env(safe-area-inset-bottom)); z-index:60;
-    width:58px; height:58px; border-radius:50%; border:none; cursor:pointer;
-    background:linear-gradient(160deg,#d8b071,#b9853f);
-    box-shadow:0 10px 26px rgba(150,110,50,.4), inset 0 2px 4px rgba(255,240,210,.6);
-    display:grid; place-items:center; color:#fff;
-  }
-  .music svg{width:24px; height:24px; fill:currentColor}
-  .music .ic-off{display:none}
-  .music:not(.playing) .ic-on{display:none}
-  .music:not(.playing) .ic-off{display:block}
-  .music.playing::after{content:''; position:absolute; inset:-6px; border-radius:50%; border:1px solid rgba(190,150,90,.6); animation:ring 1.8s ease-out infinite}
-  @keyframes ring{from{transform:scale(.9); opacity:1} to{transform:scale(1.35); opacity:0}}
-
-  /* ── hero ── */
+  /* hero */
   .hero{min-height:100svh; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden}
   .hero-bg{position:absolute; inset:0}
   .hero-bg img{width:100%; height:100%; object-fit:cover; animation:kb 24s ease-in-out infinite alternate}
   @keyframes kb{from{transform:scale(1)} to{transform:scale(1.1)}}
   .hero-veil{position:absolute; inset:0; background:
-    radial-gradient(ellipse at 50% 36%, rgba(250,243,232,.82), rgba(250,243,232,.4) 46%, rgba(56,42,28,.42) 100%)}
-  .hero-inner{position:relative; z-index:2; text-align:center; padding:5rem 1.4rem 6rem; color:#fdf9f2; text-shadow:0 2px 22px rgba(110,80,45,.45)}
+    linear-gradient(180deg, rgba(56,40,24,.42) 0%, rgba(56,40,24,.2) 45%, rgba(56,40,24,.62) 100%),
+    radial-gradient(ellipse at 50% 45%, rgba(250,243,232,.22), rgba(250,243,232,0) 62%)}
+  .hero-inner{position:relative; z-index:2; text-align:center; padding:5rem 1.4rem 6rem; color:#fdf9f2;
+    text-shadow:0 2px 26px rgba(40,26,12,.75), 0 1px 4px rgba(40,26,12,.55)}
   .hero-inner .eyebrow{color:#f3e6cf}
   .h-names{font-family:var(--ff-d); font-weight:500; font-size:clamp(3rem,13vw,5.6rem); line-height:1.05; margin:1.4rem 0}
   .h-names .i{display:block; font-family:var(--ff-s); font-size:.42em; color:#f6cfc6; margin:.2em 0}
@@ -103,12 +89,12 @@
   .h-date b{font-family:var(--ff-d); font-size:1.7em; letter-spacing:.1em; font-weight:500}
   .h-date i{width:44px; height:1px; background:rgba(253,249,242,.7)}
   .h-phrase{font-family:var(--ff-d); font-size:clamp(1.2rem,5vw,1.6rem); max-width:26ch; margin:2.4rem auto 0; line-height:1.55}
-  .h-scroll{position:absolute; left:50%; bottom:1.6rem; transform:translateX(-50%); z-index:2; color:#fdf9f2; text-align:center; font:500 .62rem/1 var(--ff-b); letter-spacing:.4em; text-transform:uppercase; text-shadow:0 1px 10px rgba(110,80,45,.5)}
+  .h-scroll{position:absolute; left:50%; bottom:1.6rem; transform:translateX(-50%); z-index:2; color:#fdf9f2; text-align:center; font:500 .62rem/1 var(--ff-b); letter-spacing:.4em; text-transform:uppercase; text-shadow:0 1px 10px rgba(40,26,12,.6)}
   .h-scroll i{display:block; width:1px; height:46px; background:rgba(253,249,242,.85); margin:.8rem auto 0; position:relative; overflow:hidden}
   .h-scroll i::after{content:''; position:absolute; inset:0; background:var(--gold); animation:drip 2.2s ease-in-out infinite}
   @keyframes drip{0%{transform:translateY(-100%)} 55%{transform:translateY(0)} 100%{transform:translateY(100%)}}
 
-  /* ── это мы ── */
+  /* это мы */
   .we-main{border-radius:28px; overflow:hidden; box-shadow:0 20px 50px rgba(120,90,50,.18); margin-top:2.6rem}
   .we-main img{width:100%; aspect-ratio:4/5; object-fit:cover; object-position:top}
   .we-two{display:grid; grid-template-columns:1fr 1fr; gap:clamp(.9rem,3vw,1.6rem); margin-top:clamp(1rem,3vw,1.6rem)}
@@ -118,19 +104,11 @@
   .we-cap .eyebrow{font-size:.62rem}
   .we-cap p:last-child{font-family:var(--ff-d); font-size:1.7rem; margin-top:.5rem}
 
-  /* ── моменты (галерея) ── */
-  .mom{background:var(--bg2)}
-  .mom-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(.8rem,2.6vw,1.3rem); margin-top:2.6rem}
-  .mom-grid figure{border-radius:20px; overflow:hidden; box-shadow:0 12px 30px rgba(120,90,50,.15)}
-  .mom-grid img{width:100%; aspect-ratio:3/4; object-fit:cover; transition:transform 5s ease}
-  .mom-grid figure:hover img{transform:scale(1.07)}
-  @media (min-width:860px){ .mom-grid{grid-template-columns:repeat(3,1fr)} }
-
-  /* ── приглашение ── */
+  /* приглашение */
   .inv-quote{font-family:var(--ff-d); font-size:4rem; line-height:.5; color:var(--rose); text-align:center; margin:2.2rem 0 1.6rem}
   .inv-text{font-family:var(--ff-d); font-style:italic; font-size:clamp(1.2rem,4.8vw,1.5rem); line-height:2; text-align:center; max-width:32ch; margin:0 auto; color:var(--ink)}
 
-  /* ── календарь ── */
+  /* календарь */
   .cal{background:var(--bg2)}
   .cal-card{max-width:430px; margin:2.8rem auto 0; background:var(--card); border:1px solid var(--line); border-radius:26px; padding:clamp(1.6rem,5vw,2.6rem) clamp(1rem,4vw,2rem); box-shadow:0 18px 44px rgba(120,90,50,.12)}
   .cal-month{font-family:var(--ff-d); font-size:1.7rem; text-align:center; margin-bottom:1.6rem}
@@ -138,25 +116,17 @@
   .cal-wd{font:500 .68rem/1 var(--ff-b); letter-spacing:.12em; color:var(--ink2)}
   .cal-grid span{font-family:var(--ff-d); font-size:1.15rem; width:44px; height:44px; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto; border-radius:50%}
   .cal-grid .mut{color:#c9bda9}
-  .cal-grid .sel{background:linear-gradient(160deg,#d8b071,#b9853f); color:#fff; box-shadow:0 8px 18px rgba(150,110,50,.35); position:relative}
+  .cal-grid .sel{background:linear-gradient(160deg,#d8b071,#b9853f); color:#fff; box-shadow:0 8px 18px rgba(150,110,50,.35)}
   .cal-grid .sel::after{content:'♥'; font-size:.5rem; line-height:0; margin-top:2px}
   .cal-btns{display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-top:2.4rem}
   .btn-o{
     display:inline-flex; align-items:center; gap:.6em; padding:.95em 2em; border-radius:999px;
     border:1px solid var(--gold); color:var(--gold-d); background:transparent; cursor:pointer;
-    font:500 .72rem/1 var(--ff-b); letter-spacing:.24em; text-transform:uppercase; text-decoration:none;
-    transition:.35s;
+    font:500 .72rem/1 var(--ff-b); letter-spacing:.24em; text-transform:uppercase; text-decoration:none; transition:.35s;
   }
   .btn-o:hover{background:var(--gold); color:#fff}
-  .btn-gold{
-    display:inline-flex; align-items:center; justify-content:center; gap:.7em; padding:1.05em 2.8em; border-radius:999px; border:none; cursor:pointer;
-    background:linear-gradient(160deg,#d8b071,#b9853f); color:#fff;
-    font:500 .74rem/1 var(--ff-b); letter-spacing:.26em; text-transform:uppercase;
-    box-shadow:0 12px 28px rgba(150,110,50,.35); transition:.35s;
-  }
-  .btn-gold:hover{transform:translateY(-2px); box-shadow:0 16px 34px rgba(150,110,50,.45)}
 
-  /* ── программа ─ */
+  /* программа */
   .tl{max-width:560px; margin:3rem auto 0; position:relative}
   .tl::before{content:''; position:absolute; left:33px; top:20px; bottom:20px; width:1px; background:var(--gold)}
   .tl-row{display:grid; grid-template-columns:68px 1fr; gap:1.2rem; align-items:start; padding:0 0 1.6rem}
@@ -169,8 +139,9 @@
   .tl-card::before{content:''; position:absolute; left:-7px; top:26px; width:12px; height:12px; background:var(--card); border-left:1px solid var(--line); border-bottom:1px solid var(--line); transform:rotate(45deg)}
   .tl-time{font-family:var(--ff-d); font-size:1.5rem; color:var(--gold-d); margin-bottom:.2rem}
   .tl-txt{font-family:var(--ff-d); font-size:1.2rem}
+  .tl-sub{font-family:var(--ff-d); font-size:1.08rem; color:var(--ink2); margin-top:.5rem; line-height:1.65}
 
-  /* ── дресс-код ── */
+  /* дресс-код */
   .dress{background:var(--bg2); text-align:center}
   .dress-note{font-family:var(--ff-d); font-size:clamp(1.1rem,4.4vw,1.35rem); max-width:34ch; margin:1.6rem auto 0; color:var(--ink)}
   .swatches{display:flex; justify-content:center; align-items:flex-end; gap:clamp(1.2rem,5vw,2.6rem); flex-wrap:wrap; margin-top:3rem}
@@ -179,7 +150,7 @@
   .sw:hover i{transform:translateY(-6px) scale(1.08)}
   .sw span{font-family:var(--ff-d); font-style:italic; font-size:1.05rem; color:var(--ink2)}
 
-  /* ── место ── */
+  /* место */
   .place-addr{font-family:var(--ff-d); font-size:clamp(1.15rem,4.6vw,1.45rem); text-align:center; max-width:30ch; margin:2.2rem auto 0; line-height:1.8}
   .map-box{position:relative; margin-top:2.6rem; border-radius:26px; overflow:hidden; box-shadow:0 18px 44px rgba(120,90,50,.16)}
   .map-box iframe{width:100%; height:420px; border:0; display:block}
@@ -191,25 +162,16 @@
   }
   .map-btn svg{width:16px; height:16px; fill:#e0442a}
 
-  /* ── оргмоменты ── */
-  .notes{background:var(--bg2)}
-  .notes-grid{display:grid; grid-template-columns:1fr; gap:1.2rem; margin-top:2.6rem}
-  @media (min-width:820px){ .notes-grid{grid-template-columns:repeat(3,1fr)} }
-  .note{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:1.8rem 1.6rem; text-align:center; box-shadow:0 12px 30px rgba(120,90,50,.1)}
-  .note svg{width:30px; height:30px; stroke:var(--gold); fill:none; stroke-width:1.5; margin:0 auto .9rem; display:block}
-  .note h4{font:600 .72rem/1.3 var(--ff-b); letter-spacing:.26em; text-transform:uppercase; color:var(--gold-d); margin-bottom:.7rem}
-  .note p{font-family:var(--ff-d); font-size:1.08rem; color:var(--ink2)}
-
-  /* ── анкета ── */
+  /* анкета */
   .rsvp-card{max-width:640px; margin:2.8rem auto 0; background:var(--card); border:1px solid var(--line); border-radius:26px; padding:clamp(1.8rem,6vw,3rem); box-shadow:0 18px 44px rgba(120,90,50,.12)}
   .f-grid{display:grid; gap:1.9rem}
   .f-lab, .opt-set legend{display:block; font:500 .66rem/1.5 var(--ff-b); letter-spacing:.3em; text-transform:uppercase; color:var(--gold-d); margin-bottom:.9rem}
   .f-field{border:none}
-  .f-field input[type=text], .f-field textarea{
+  .f-field input[type=text]{
     width:100%; background:transparent; border:none; border-bottom:1px solid var(--line);
-    color:var(--ink); font:400 1.05rem/1.5 var(--ff-b); padding:.55em 2px; transition:border-color .3s; resize:none;
+    color:var(--ink); font:400 1.05rem/1.5 var(--ff-b); padding:.55em 2px; transition:border-color .3s;
   }
-  .f-field input:focus, .f-field textarea:focus{outline:none; border-bottom-color:var(--gold)}
+  .f-field input:focus{outline:none; border-bottom-color:var(--gold)}
   .f-field ::placeholder{color:#c4b7a2}
   .f-field.err input{border-bottom-color:#d0684f; animation:shake .5s}
   .opt-set.err legend{color:#d0684f}
@@ -259,13 +221,6 @@
 
 <div id="petals" aria-hidden="true"></div>
 
-<!-- музыка: положите файл music.mp3 рядом с index.html (необязательно) -->
-<audio id="bgMusic" src="music.mp3" loop preload="none"></audio>
-<button class="music" id="musicBtn" type="button" aria-label="Музыка">
-  <svg class="ic-on" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1c2.9.9 5 3.5 5 6.7s-2.1 5.8-5 6.7v2.1c4-.9 7-4.5 7-8.8s-3-7.9-7-8.8z"/></svg>
-  <svg class="ic-off" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.6 3 2.7-2.7-1.4-1.4-2.7 2.7-2.7-2.7-1.4 1.4 2.7 2.7-2.7 2.7 1.4 1.4 2.7-2.7 2.7 2.7 1.4-1.4-2.7-2.7z"/></svg>
-</button>
-
 <!-- ═══ ГЛАВНЫЙ ЭКРАН ═══ -->
 <header class="hero" id="top">
   <div class="hero-bg"><img src="img/main.jpg" alt="Павел и Мария"></div>
@@ -302,32 +257,6 @@
         <figure><img src="img/maria.jpg" alt="Мария" loading="lazy" decoding="async"></figure>
         <div class="we-cap"><p class="eyebrow">Невеста</p><p>Мария</p></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ МОМЕНТЫ (галерея) ═══
-     Чтобы добавить фото: скопируйте блок <figure>…</figure>
-     и положите файл в папку img, например img/photo4.jpg -->
-<section class="sec mom" id="moments">
-  <div class="wrap">
-    <div class="rv">
-      <p class="eyebrow">Наша история</p>
-      <h2 class="s-title">Моменты</h2>
-      <svg class="div-orn" viewBox="0 0 260 36" aria-hidden="true">
-        <g stroke="#c09a58" stroke-width="1.5" fill="none"><path d="M6 18h72"/><path d="M182 18h72"/></g>
-        <g fill="#c09a58"><path d="M78 18c11-8 24-8 32 0-8 8-21 8-32 0z"/><path d="M182 18c-11-8-24-8-32 0 8 8 21 8 32 0z"/></g>
-        <g stroke="#c09a58" stroke-width="1.5" fill="none"><path d="M130 7v8"/><path d="M124 12q6 5 12 0"/></g>
-        <circle cx="130" cy="19" r="2.6" fill="#c09a58"/>
-      </svg>
-    </div>
-    <div class="mom-grid">
-      <figure class="rv"><img src="img/main.jpg" alt="Мы вдвоём" loading="lazy" decoding="async"></figure>
-      <figure class="rv" style="--d:.1s"><img src="img/pavel.jpg" alt="Паша с укулеле" loading="lazy" decoding="async"></figure>
-      <figure class="rv" style="--d:.2s"><img src="img/maria.jpg" alt="Маша в парке" loading="lazy" decoding="async"></figure>
-      <!-- СЮДА ДОБАВЛЯЙТЕ НОВЫЕ ФОТО:
-      <figure class="rv"><img src="img/photo4.jpg" alt="" loading="lazy" decoding="async"></figure>
-      -->
     </div>
   </div>
 </section>
@@ -402,7 +331,11 @@
       </div>
       <div class="tl-row rv" style="--d:.12s">
         <div class="tl-dot"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.6-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.4-7 9-7 9z"/></svg></div>
-        <div class="tl-card"><p class="tl-time">16:00</p><p class="tl-txt">Начало праздничной программы</p></div>
+        <div class="tl-card">
+          <p class="tl-time">16:00</p>
+          <p class="tl-txt">Начало праздничной программы</p>
+          <p class="tl-sub">Церемония бракосочетания, конкурсы и активности от ведущего, тосты, ужин, танцы и всё, что мы для вас приготовили. Закат солнца нас не остановит!</p>
+        </div>
       </div>
     </div>
   </div>
@@ -455,26 +388,6 @@
   </div>
 </section>
 
-<!-- ═══ ОРГМОМЕНТЫ ═══ -->
-<section class="sec notes">
-  <div class="wrap">
-    <div class="notes-grid">
-      <div class="note rv">
-        <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-        <h4>Про подарки</h4><p>Главный подарок — это вы. Если захотите дополнить — будем рады вкладу в путешествие: конверт вместо букета.</p>
-      </div>
-      <div class="note rv" style="--d:.1s">
-        <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 1 9 9H3a9 9 0 0 1 9-9z"/><path d="M12 12v7"/><path d="M12 19a2 2 0 0 0 4 0"/></svg>
-        <h4>Про погоду</h4><p>Конец лета у воды — тепло днём и прохладно вечером. Прихватите лёгкую куртку для танцев под звёздами.</p>
-      </div>
-      <div class="note rv" style="--d:.2s">
-        <svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg>
-        <h4>Про ночлег</h4><p>На базе есть домики для гостей. Хотите остаться до утра — напишите нам, поможем с бронью.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══ АНКЕТА ═══ -->
 <section class="sec" id="rsvp">
   <div class="wrap">
@@ -517,13 +430,10 @@
             <span class="f-lab">Песня, под которую вы точно затанцуете</span>
             <input type="text" name="song" placeholder="Заявка диджею">
           </div>
-          <div class="f-field">
-            <span class="f-lab">Аллергии и особенности питания</span>
-            <textarea name="notes" rows="2" placeholder="Например: без орехов"></textarea>
-          </div>
           <div style="text-align:center">
-            <button class="btn-gold" type="submit">Отправить ответ</button>
-            <p class="f-note">Ответы принимаем до 20 августа · вопросы: +7 900 123-45-67 (Маша)</p>
+            <button class="btn-gold" type="submit" style="display:inline-flex; align-items:center; justify-content:center; padding:1.05em 2.8em; border-radius:999px; border:none; cursor:pointer; background:linear-gradient(160deg,#d8b071,#b9853f); color:#fff; font:500 .74rem/1 var(--ff-b); letter-spacing:.26em; text-transform:uppercase; box-shadow:0 12px 28px rgba(150,110,50,.35);">Отправить ответ</button>
+            <!-- ═══ ВПИШИТЕ НАСТОЯЩИЙ НОМЕР МАШИ ВМЕСТО ЗАГЛУШКИ ═══ -->
+            <p class="f-note">Ответы принимаем до 20 августа · вопросы: +7 906 166-06-16 (Мария)</p>
           </div>
         </div>
       </form>
@@ -550,39 +460,26 @@
   /* ═══ ПОЧТА ДЛЯ ОТВЕТОВ ГОСТЕЙ ═══
      Впишите почту: var RSVP_EMAIL = 'ваша@почта.ru';
      После первой тестовой отправки кликните ссылку в письме от FormSubmit. */
-  var RSVP_EMAIL = '';
+  var RSVP_EMAIL = 'xwhitesox@gmail.com';
 
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* конверт */
-  var env = document.getElementById('env');
   document.getElementById('seal').addEventListener('click', function(){
-    env.classList.add('open');
+    document.getElementById('env').classList.add('open');
     document.documentElement.classList.remove('lock');
-    tryMusic(true);
   });
 
-  /* музыка */
-  var audio = document.getElementById('bgMusic'),
-      mBtn = document.getElementById('musicBtn');
-  function tryMusic(play){
-    if(play){ audio.play().then(function(){ mBtn.classList.add('playing'); }).catch(function(){}); }
-    else{ audio.pause(); mBtn.classList.remove('playing'); }
-  }
-  mBtn.addEventListener('click', function(){
-    if(mBtn.classList.contains('playing')) tryMusic(false); else tryMusic(true);
-  });
-
-  /* лепестки */
+  /* лепестки — помягче и пореже */
   if(!RM){
     var box = document.getElementById('petals');
-    for(var i=0;i<14;i++){
+    for(var i=0;i<10;i++){
       var p = document.createElement('i');
-      var s = 10 + Math.random()*14;
+      var s = 10 + Math.random()*12;
       p.style.left = Math.random()*100 + '%';
       p.style.width = s + 'px'; p.style.height = s*.82 + 'px';
-      p.style.animationDuration = (10 + Math.random()*12) + 's';
-      p.style.animationDelay = (-Math.random()*20) + 's';
+      p.style.animationDuration = (12 + Math.random()*12) + 's';
+      p.style.animationDelay = (-Math.random()*22) + 's';
       box.appendChild(p);
     }
   }
@@ -660,7 +557,6 @@
           'Придёт': ATTEND_TXT[attend.value],
           'Напитки': drinks || '—',
           'Песня': form.song.value.trim() || '—',
-          'Питание/аллергии': form.notes.value.trim() || '—',
           '_subject': 'RSVP на свадьбу: ' + name
         })
       }).catch(function(err){ console.warn('Не удалось отправить ответ:', err); });
